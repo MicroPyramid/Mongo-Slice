@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-    url(r'^$', 'mscice.views.index'),
+    url(r'^$', 'mslice.views.index'),
+    url(r'^logout/$', 'mslice.views.mlogout'),
 )

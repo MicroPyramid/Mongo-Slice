@@ -29,11 +29,11 @@
       <div class="panel-body" id="panel-body">
         <form id="frmlogin" role="form" action='/' method="POST">
 		<div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-desktop"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                   <input type="text" class="form-control" id="host" name="host" placeholder="Host Name / IP address">
                 </div>
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                   <input type="text" class="form-control"  id="port" name="port" placeholder="Port Number">
                 </div>
                 <div class="input-group">
@@ -41,7 +41,7 @@
                   <input type="text" class="form-control"  id="db" name="db" placeholder="Database Name">
                 </div>
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                   <input type="text" class="form-control" id="uid" name="uid" placeholder="DB Username">
                 </div>
                 <div class="input-group">
@@ -49,7 +49,7 @@
                   <input type="text" class="form-control" id="pwd" name="pwd" placeholder="DB Password">
                 </div>
 
-            <div class="panel-footer"> <button type="submit" class="btn btn-default log-btn fb13"><i class="fa fa-check"></i> &nbsp;Login</button></div>
+            <div class="panel-footer"> <button type="submit" class="btn btn-default log-btn fb12 tup">Submit</button></div>
              
 		</form>
       </div>

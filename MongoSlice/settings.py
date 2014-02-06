@@ -78,9 +78,8 @@ TEMPLATE_DIRS = (
     os.getenv("HOME") + "/workspace/MongoSlice/templates",
 )
 
-SESSION_ENGINE = "django.contrib.sessions.backends.file"
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_FILE_PATH = os.getenv("HOME") + "/workspace/MongoSlice/sessions"
 
 INSTALLED_APPS = (
     'django.contrib.auth',
