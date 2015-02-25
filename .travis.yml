@@ -1,0 +1,26 @@
+language: python
+python:
+  - "2.7"
+
+services: mysql
+#Django & Database
+
+env:
+  -DJANGO=1.7 DB=mysql
+  -DJANGO=1.7 DB=sqlite3
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+  - pip install mysql-python --use-mirrors
+
+#mysql db creation
+before_script:
+  - mysql -e 'create database test;' -u root
+# command to run tests
+script:
+  - python manage.py test
+  - coverage run --source=mslice manage.py test
+
+after_success:
+  coveralls
