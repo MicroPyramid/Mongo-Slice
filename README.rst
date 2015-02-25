@@ -10,10 +10,10 @@ MongoDB tool to monitor, interact with your mongodb servers.
    :target: https://readthedocs.org/projects//mongo-slice/?badge=latest
    :alt: Documentation Status
 
-.. image:: https://coveralls.io/repos/MicroPyramid//mongo-slice/badge.png?branch=master
+.. image:: https://coveralls.io/repos/MicroPyramid/mongo-slice/badge.png?branch=master
    :target: https://coveralls.io/r/MicroPyramid//mongo-slice?branch=master
 
-.. image:: https://landscape.io/github/MicroPyramid//mongo-slice/master/landscape.svg
+.. image:: https://landscape.io/github/MicroPyramid/mongo-slice/master/landscape.svg
    :target: https://landscape.io/github/MicroPyramid//mongo-slice/master
    :alt: Code Health
 
