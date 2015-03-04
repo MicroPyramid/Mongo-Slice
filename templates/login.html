@@ -27,7 +27,7 @@
         <h3 class="panel-title tup">Login</h3>
       </div>
       <div class="panel-body" id="panel-body">
-        <form id="frmlogin" role="form" action='/' method="POST">
+        <form id="frmlogin" role="form" action='.' method="POST">
 		<div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-desktop"></i></span>
                   <input type="text" class="form-control" id="host" name="host" placeholder="Host Name / IP address">
@@ -63,7 +63,7 @@
         Authenticating...
     </div>
 </div>
-
+<script src="/static/js/jquery.flippy.min.js"></script>
 <script>
 $(document).ready(function(){
     $('body').on('submit', '#frmlogin', function(e){
@@ -76,7 +76,7 @@ $(document).ready(function(){
             duration: "500",
             verso: $('.singing').html(),
             onFinish: function(){
-                $.post('/', $(frm).serialize(), function(data){
+                $.post('.', $(frm).serialize(), function(data){
                     console.log(data);
                     if(data.login==true)
                     {
@@ -106,7 +106,6 @@ $(document).ready(function(){
     });
 });
 </script>
-
 </body>
 </html>
 

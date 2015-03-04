@@ -12,7 +12,13 @@ ALLOWED_HOSTS = []
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (BASE_DIR + '/static',)
+STATICFILES_DIRS = (BASE_DIR + "/static",)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
 
 SECRET_KEY = '0e%-7s*&g+4z%x4y*$9&4^30ddeisrf2_msn9y+10tz$is$kz6'
 
@@ -67,5 +73,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+    }
+}
+
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }

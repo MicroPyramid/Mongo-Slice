@@ -1,15 +1,64 @@
 <html>
 <head>
 <title>MongoSlice</title>
-
+<h3>Current Database is: {{db}}</h3>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
+<style>
+.mt{
+margin:0px auto;
+}
+.container
+{
+width:99%;
+margin:0px auto;
+}
+</style>
 </head>
 <body>
+	<div class="row mt">
+	 <div class="container">
+		<h4>Collections in the Database:</h4>
+		<div class="col-lg-3">
+			{% for col in collections %}
+			<ul> <a href="/info/{{col}}/">{{col}}</a><br></ul>
+			<li><a class="database" href="#">create</a></li>
+			<li><a class="database" href="#">delete</a></li>
+			<li><a class="database" href="#">update</a></li>
+			<li><a class="database1" href="#">read</a></li>
+
+			{% endfor %}
+		</div>
+		<div class="col-lg-9">
+			<!-- {{collstats}}-->
+			<div id="display">
+			<form name="insertform" method="post" action="/operations/">
+			<textarea name="ta"></textarea></div><input type="submit"></form>
+			<div id="display1">
+			<h4>Documents under {{name}} [{{count}}]</h4>
+			{% for doc in documents %}
+			<p>{{doc}}</p>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+	</div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+	$('.database').click(function(e){
+		$('#display').show();
+		$('#display1').hide();
+	});
+	$('.database1').click(function(e){
+		$('#display1').show();
+		$('#display').hide();
+	});
+	});
+</script>
 </html>
