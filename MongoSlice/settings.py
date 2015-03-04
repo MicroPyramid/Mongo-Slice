@@ -12,15 +12,11 @@ ALLOWED_HOSTS = []
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (BASE_DIR +'/static',)
-# (
-#     os.getenv('HOME') + "/workspace/MongoSlice/static/",
-# )
+STATICFILES_DIRS = (BASE_DIR + "/static",)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 
@@ -40,10 +36,7 @@ ROOT_URLCONF = 'MongoSlice.urls'
 
 WSGI_APPLICATION = 'MongoSlice.wsgi.application'
 
-TEMPLATE_DIRS = (BASE_DIR +'/templates',)
-# TEMPLATE_DIRS = (
-#     os.getenv("HOME") + "/Mongo-Slice/templates",
-# )
+TEMPLATE_DIRS = (BASE_DIR + "/templates",)
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -84,8 +77,8 @@ LOGGING = {
 }
 
 DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.sqlite3',
-'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-}
+    'default': {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
