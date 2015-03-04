@@ -41,13 +41,11 @@ def mlogout(request):
     return HttpResponseRedirect('/')
 
 def info(request,coll_name):
-    print coll_name
     ctxc = {}
     connection = Connection(request.session['host'], int(request.session['port']))
     db = connection[request.session['db']]
     ctxc['count']=db[coll_name].count()
     ctxc['documents'] = list(db[coll_name].find())
-    print list(db[coll_name].find())
     #ctxc['collstats'] = db.command("collstats", coll_name)
     ctxc['collections'] = db.collection_names()
     ctxc['db'] = request.session['db']   
@@ -57,9 +55,7 @@ def info(request,coll_name):
 def insert_doc(request):
     if request.method == 'GET':
         return render_to_response('index.html')
-    print request.POST.get('ta')
     query=request.POST.get('ta')
     connection = Connection(request.session['host'], int(request.session['port']))
     db = connection[request.session['db']]
-    print connection.db.studentdetails.insert({'author':'mike'})  
     return render_to_response('index.html')
