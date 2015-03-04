@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from pymongo import Connection
 import json
+
+
 def index(request):
     if request.method == "POST":
         from mpcomp.views import mongoauth
@@ -35,10 +37,12 @@ def index(request):
     else:
         return render_to_response('login.html')
 
+
 def mlogout(request):
     from django.http import HttpResponseRedirect
     request.session.flush()
     return HttpResponseRedirect('/')
+
 
 def info(request,coll_name):
     ctxc = {}
@@ -48,9 +52,10 @@ def info(request,coll_name):
     ctxc['documents'] = list(db[coll_name].find())
     #ctxc['collstats'] = db.command("collstats", coll_name)
     ctxc['collections'] = db.collection_names()
-    ctxc['db'] = request.session['db']   
+    ctxc['db'] = request.session['db']
     ctxc['name'] = coll_name
     return render_to_response('index.html',ctxc)
+
 
 def insert_doc(request):
     if request.method == 'GET':
