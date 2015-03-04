@@ -1,5 +1,5 @@
 import os
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -42,9 +42,10 @@ STATIC_ROOT = ''
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.getenv('HOME') + "/workspace/MongoSlice/static/",
-)
+STATICFILES_DIRS = (BASE_DIR +'/static',)
+# (
+#     os.getenv('HOME') + "/workspace/MongoSlice/static/",
+# )
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -73,10 +74,12 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'MongoSlice.urls'
 
 WSGI_APPLICATION = 'MongoSlice.wsgi.application'
+print os.getenv("HOME") + "/mongo-slice/Mongo-Slice/templates",
 
-TEMPLATE_DIRS = (
-    os.getenv("HOME") + "/workspace/MongoSlice/templates",
-)
+TEMPLATE_DIRS = (BASE_DIR +'/templates',)
+# TEMPLATE_DIRS = (
+#     os.getenv("HOME") + "/Mongo-Slice/templates",
+# )
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
