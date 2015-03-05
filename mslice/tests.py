@@ -21,7 +21,7 @@ class Test_Mongo(TestCase):
 		self.client = Client()
 		self.mongoclient = pymongo.MongoClient()
 		self.db = self.mongoclient.slice
-		self.db.add_user('root', 'root', roles=['root'])
+		self.db.add_user('root', 'root')
 		self.db.post.insert({'auther': 'ravi', 'title': 'Pymongo tut','description': 'desc'})
 
 
