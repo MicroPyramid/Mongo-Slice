@@ -2,25 +2,30 @@ language: python
 python:
   - "2.7"
 
-services: mysql
-#Django & Database
+#to start mongodb in travis
+services:
+  - mongodb
 
+#Django & Database
 env:
-  -DJANGO=1.7 DB=mysql
-  -DJANGO=1.7 DB=sqlite3
+  -DJANGO=1.7.4 DB=mysql
+  -DJANGO=1.7.4 DB=sqlite3
 
 install:
   - pip install -r requirements.txt
   - pip install coveralls
   - pip install mysql-python --use-mirrors
 
-#mysql db creation
-before_script:
-  - mysql -e 'create database test;' -u root
+
 # command to run tests
 script:
   - python manage.py test
   - coverage run --source=mslice manage.py test
 
+#submiting result to coverals.io
 after_success:
   coveralls
+
+# .travis.yml
+before_script:
+  - mongo slice --eval 'db.addUser("root", "root");'
