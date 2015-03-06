@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+
 def index(request):
     if request.method == "POST":
         from mpcomp.views import mongoauth
@@ -39,10 +40,12 @@ def index(request):
         c.update(csrf(request))
         return render_to_response('login.html',{'csrf_token':c['csrf_token']})
 
+
 def mlogout(request):
     from django.http import HttpResponseRedirect
     request.session.flush()
     return HttpResponseRedirect('/')
+
 
 def info(request,coll_name):
     ctxc = {}
@@ -52,11 +55,12 @@ def info(request,coll_name):
     ctxc['documents'] = list(db[coll_name].find())
     ctxc['collstats'] = db.command("collstats", coll_name)
     ctxc['collections'] = db.collection_names()
-    ctxc['db'] = request.session['db']   
+    ctxc['db'] = request.session['db']
     ctxc['name'] = coll_name
  
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
     return render_to_response('index.html',ctxc)
+
 
 @csrf_exempt
 def insert_doc(request):

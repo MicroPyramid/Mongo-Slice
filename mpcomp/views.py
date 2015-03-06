@@ -6,7 +6,6 @@ from bson import json_util
 import string
 import random
 
-#dummy text
 
 def getConn(request):
     import pymongo
@@ -19,7 +18,6 @@ def getConn(request):
 
 def mongoauth(host, port, db, uid, pwd):
     import pymongo
-    print host, port, db, uid, pwd
     if host=="" or host is None or port=="" or port is None or db=="" or db is None or  uid=="" or uid is None or pwd=="" or pwd is None:
         return False
 
@@ -31,7 +29,9 @@ def mongoauth(host, port, db, uid, pwd):
     except pymongo.errors.PyMongoError:
         return False
 
+
 class MongoEncoder(JSONEncoder):
+    
     def default(self, obj, **kwargs):
         if isinstance(obj, ObjectId):
             return str(obj)
