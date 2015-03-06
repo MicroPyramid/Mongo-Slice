@@ -28,6 +28,7 @@
       </div>
       <div class="panel-body" id="panel-body">
         <form id="frmlogin" role="form" action='.' method="POST">
+        {% csrf_token %}
 		<div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-desktop"></i></span>
                   <input type="text" class="form-control" id="host" name="host" placeholder="Host Name / IP address">
