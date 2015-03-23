@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mongo-Slice</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--/bootstrap-->
+    <!--style-->
+    <link href="/static/css/flat-ui.min.css" rel="stylesheet">
+    <link href="/static/css/demo.css" rel="stylesheet">
+    <link href="/static/css/tree_view.css" rel='stylesheet'>
+    <link href="/static/css/m-style.css" rel='stylesheet'>
+    <!--/style-->
+  </head>
+  <body>
+  <!--header-->
+<header class="navbar-fixed-top bs-docs-nav top-bg" style="display:block !important;">
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand fn16" href="#">Mongo Slice</a>
+  </div>
+</nav>
+</header>
+  <!--/header-->
+    <article class='wireframe-container'>
+      <section class='col-md-2 tree-div'>
+        <ul class="treeview">
+          <li>
+            item 1
+            <ul>
+              <li>subitem 1</li>
+              <li>subitem 2</li>
+            </ul>
+          </li>
+          <li>Foo Item</li>
+          <li>
+            Countries
+            <ul>
+              <li>
+                United States
+                <ul>
+                  <li>New York</li>
+                  <li>San Francisco</li>
+                  <li>Chicago</li>
+                  <li>Los Angeles</li>
+                </ul>
+              </li>
+              <li>United Kingdom</li>
+              <li>China</li>
+              <li>
+                India
+                <ul>
+                  <li>New Delhi</li>
+                  <li>Mumbai</li>
+                  <li>Chennai</li>
+                  <li>Kolkata</li>
+                </ul>
+              </li>
+              <li>Russia</li>
+              <li>France</li>
+              <li>Germany</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section class='col-md-10 content-wrap-div'>
+        <div class='row mt'>
+          fewsc
+        </div>
+      </section>
+      <div class="clearfix"></div>
+    </article>
+    <!--script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/static/js/flat-ui.min.js"></script>
+    <script src="/static/js/application.js"></script>
+    <!--tree view-->
+    <script src="/static/js/jquery.treeView.js"></script>
+    <!--/tree view-->
+    <script>
+      $('.treeview').treeView();
+    </script>
+    <!--/script-->
+  </body>
+</html>

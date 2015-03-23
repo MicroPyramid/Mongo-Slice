@@ -85,3 +85,6 @@ def insert_doc(request):
     list1=query.split('.')
     db[coll_name].list1[3]
     return render_to_response('index.html',ctxc)
+
+def wireframe(request):
+    return render_to_response('wireframe.html')
