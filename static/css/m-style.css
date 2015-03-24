@@ -63,6 +63,8 @@ box-shadow: 0 0 15px #bbb;}
 	position: relative;
 	height: 100%;
 	background: #fff;
+	/*background: #3f4d57;
+	color: #fff;*/
 	border-right:2px solid #ddd;
 }
 .treeview{
@@ -78,5 +80,35 @@ box-shadow: 0 0 15px #bbb;}
 .mt{
 	margin:0px;
 }
-
+.txt-area-div{
+	margin-top: 20px;
+}
+.form-control{
+	border-radius: 0px;
+}
+.submit-btn-wireframe{
+	width: 15%;
+	float: right;
+	margin-top: 15px;
+}
+.submit-btn-wireframe a{
+	padding: 5px 19px;
+}
  /* wireframe*/
+ /*nav-bar*/
+ .navbar{
+ 	margin-bottom: 0px;
+ }
+/*.top-bg .navbar-default {
+  background-color: #1abc9c;
+}
+.top-bg .navbar-brand{
+	color: #34495e;
+	font-weight: 600;
+	padding-top: 20px;
+}
+.top-bg .navbar-brand:hover{
+	background:#34495e;
+	color: #1abc9c !important;
+}*/
+/*nav-bar*/
