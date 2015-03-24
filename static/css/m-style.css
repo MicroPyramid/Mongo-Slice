@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body{font-family: 'Exo 2', sans-serif;padding:0px;margin:0px;padding-top:50px;background:#ededeb;}
+body{font-family: 'Exo 2', sans-serif;padding:0px;margin:0px;/*padding-top:50px;*/background:#ededeb;}
 
 .row{margin:0px;padding:0px;}
 span{display:block;}
@@ -45,14 +45,38 @@ box-shadow: 0 0 15px #bbb;}
  .menu .list-group .list-group-item a{color:#fff;display:block;padding:10px;background:#eb6126;text-shadow: 0 1px 0px #d84d11;}
   .menu .list-group .list-group-item a:hover{color:#fcd53b;display:block;text-decoration:none;background:#40bac8;transition:0.4s all ease-out;text-shadow: 0 1px 0px #259fad;}
 
-   
-		
- 
- 
- 
- 
- 
  .container{width:85%;float:left;display: block;position: absolute;left:15%;height:auto;"}
  .footer{width:85%;bottom:0px;background:#40bac8;border-top:3px solid #ffcc00;position:fixed;overflow:hidden;z-index:1;left:15%;color:#fff;}
  .footer ul{margin:0px;padding:0px;}.footer ul li{float:left;background:none;border:none;border-radius:0px;background:#259fad;margin-right:4px;}
  .footer .list-group-item{border-radius:0px;}.footer .list-group-item:last-child{float:right;margin-right:0px;}
+
+
+ /*wireframe */
+ article.wireframe-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-top:54px;
+}
+.tree-div{
+	padding:0px !important;
+	position: relative;
+	height: 100%;
+	background: #fff;
+	border-right:2px solid #ddd;
+}
+.treeview{
+	padding:0px;
+}
+.treeview li ul{
+	padding-left:0px;
+	margin-top:5px;
+}
+.treeview li ul li ul li{
+	padding-left:8px;
+}
+.mt{
+	margin:0px;
+}
+
+ /* wireframe*/
