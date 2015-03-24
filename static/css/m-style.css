@@ -156,6 +156,9 @@ box-shadow: 0 0 15px #bbb;}
 	background: #f2f2f2;
 	border-bottom: 2px solid #ddd;
 }
+.wire_robo .top-row .stop_play{
+	padding-top: 3px;
+}
 .wire_robo .top-row .stop_play span{
 	display: inline-block;
 	padding-right: 9px;
@@ -167,9 +170,19 @@ box-shadow: 0 0 15px #bbb;}
 .wire_robo .top-row .stop_play a.stop-debug:hover{
 	color: #E67E22;
 }
+.wire_robo .top-row .stop_play a.stop-debug i{
+	font-size: 23px;
+}
 .home-page-btn a{
 	float: right;
 	padding: 5px 45px;
+	border-radius: 0px;
+	border: 1px solid #e74c3c;
+}
+.home-page-btn a:hover{
+	background: inherit;
+	border: 1px solid #e74c3c;
+	color: #e74c3c;
 }
 .home-page-btn a.btn-block{
 	width: auto;
@@ -186,6 +199,7 @@ box-shadow: 0 0 15px #bbb;}
 	box-shadow: 1px 1px 0.5px #bbb;*/
 	margin-top: 1px;
 	padding: 10px 5px;
+	padding-left: 12px;
 }
 .connect-db-div span{
 	display: inline-block;
@@ -194,14 +208,21 @@ box-shadow: 0 0 15px #bbb;}
 .connect-db-div span i{
 	padding-right: 8px;
 }
-.connect-db-div span i.fa-link{
+.connect-db-div span i.fa-desktop{
 	color: #8E44AD;
+}
+.connect-db-div span i.fa-user{
+	color: #3498DB;
 }
 .sublime-div textarea,
 .result-div-tree,
 .result-div-error{
 	width: 98%;
 	margin: 0px auto;
+}
+.sublime-div textarea{
+	background:#272822;
+	color: #fff;
 }
 .result-div-tree,
 .result-div-error{
@@ -211,5 +232,36 @@ box-shadow: 0 0 15px #bbb;}
 }
 .result-div-error{
 	display: none;
+}
+.result-div-tree .tree-view-div{
+	padding: 0px;
+}
+.result-div-tree .tree-view-div .icons{
+	border-bottom: 1px solid #ddd;
+	padding:5px;
+}
+.result-div-tree .tree-view-div .icons span{
+	display: inline-block;
+	padding-right: 25px;
+}
+.result-div-tree .tree-view-div .icons span i{
+	color: #95A5A6;
+	padding-right: 5px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation{
+	float: right;
+	padding-right: 5px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation i{
+	font-size:16px;
+	padding-top: 2px;
+	color: 
+}
+.result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-left{
+	padding-right: 15px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-right{
+	padding-right: 0px;
+	padding-left: 15px;
 }
 /*wire_robo*/
