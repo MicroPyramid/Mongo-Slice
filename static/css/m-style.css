@@ -129,3 +129,12 @@ box-shadow: 0 0 15px #bbb;}
 	color: #1abc9c !important;
 }*/
 /*nav-bar*/
+/*login*/
+.login_title{
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	text-shadow:0 0 15px #bbb;
+	font-size: 37px;
+}
+/*login*/
