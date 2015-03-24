@@ -24,22 +24,25 @@ margin:0px auto;
 		<h4>Collections in the Database:</h4>
 		<div class="col-lg-3">
 			{% for col in collections %}
-			<ul> <a href="/info/{{col}}/">{{col}}</a><br></ul>
+			<ul><a href="/info/{{col}}/">{{col}}</a><br></ul>
 			<li><a class="database" id="{{col}}" href="#">create</a></li>
 			<li><a class="database" id="{{col}}" href="#">delete</a></li>
 			<li><a class="database" id="{{col}}" href="#">update</a></li>
-			<li><a class="database1" id="{{col}}" href="#">read</a></li>
-
+			<li><a class="database1" id="{{col}}" href="/info/{{col}}">read</a></li>
 			{% endfor %}
 		</div>
 		<div class="col-lg-9">
-			{{collstats}}
+			{% if read %}
+			<b>Statistics of the Collection - {{name}}</b><br><br>{% endif %}
+			{{collstats}}<br><br>
 			<div id="display">
 			<form name="insertform" method="post" action="/operations/">
 			{% csrf_token %}
-			<textarea name="ta" id="ta" rows="3" cols="10"></textarea><input type="submit"></form></div>
+			<textarea name="ta" id="ta" rows="3" cols="80"></textarea><input type="submit"></form></div>
+			
 			<div id="display1">
-			<h4>Documents under {{name}} [{{count}}]</h4>
+			{% if read %}
+			<b>Documents under {{name}} - {{count}}</b><br><br>{% endif %}
 			{% for doc in documents %}
 			<p>{{doc}}</p>
 			{% endfor %}
