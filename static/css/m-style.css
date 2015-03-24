@@ -52,15 +52,15 @@ box-shadow: 0 0 15px #bbb;}
 
 
  /*wireframe */
- article.wireframe-container{
+ article.wireframe-container,
+ article.wire_robo{
     position: absolute;
     height: 100%;
     width: 100%;
-    padding-top:54px;
 }
 .tree-div{
 	padding:0px !important;
-	position: relative;
+	position: absolute;
 	height: 100%;
 	background: #fff;
 	/*background: #3f4d57;
@@ -70,6 +70,19 @@ box-shadow: 0 0 15px #bbb;}
 .treeview{
 	padding:0px;
 }
+.treeview i{
+	padding-right: 5px;
+}
+.treeview i.fa-database,
+.connect-db-div span i.fa-database{
+	color: #95A5A6;
+}
+.treeview i.fa-folder{
+	color: #E67E22;
+}
+.treeview i.fa-table {
+  color: #2980B9;
+}
 .treeview li ul{
 	padding-left:0px;
 	margin-top:5px;
@@ -77,6 +90,7 @@ box-shadow: 0 0 15px #bbb;}
 .treeview li ul li ul li{
 	padding-left:8px;
 }
+
 .mt{
 	margin:0px;
 }
@@ -108,9 +122,6 @@ box-shadow: 0 0 15px #bbb;}
 .tree-div .file-icon{
 	padding-right: 5px;
 }
-.tree-div i{
-	color:#F1C40F;
-}
  /* wireframe*/
  /*nav-bar*/
  .navbar{
@@ -138,3 +149,67 @@ box-shadow: 0 0 15px #bbb;}
 	font-size: 37px;
 }
 /*login*/
+
+/*wire_robo*/
+.wire_robo .top-row{
+	padding: 5px 10px;
+	background: #f2f2f2;
+	border-bottom: 2px solid #ddd;
+}
+.wire_robo .top-row .stop_play span{
+	display: inline-block;
+	padding-right: 9px;
+	font-size: 18px;
+}
+.wire_robo .top-row .stop_play a.stop-debug{
+	color: #D35400;
+}
+.wire_robo .top-row .stop_play a.stop-debug:hover{
+	color: #E67E22;
+}
+.home-page-btn a{
+	float: right;
+	padding: 5px 45px;
+}
+.home-page-btn a.btn-block{
+	width: auto;
+}
+.home-page-btn a span{
+	display: inline-block;
+	padding-right: 10px;
+}
+.content-div-robo{
+	padding: 0px;
+}
+.connect-db-div{
+	/*background: #fff;
+	box-shadow: 1px 1px 0.5px #bbb;*/
+	margin-top: 1px;
+	padding: 10px 5px;
+}
+.connect-db-div span{
+	display: inline-block;
+	padding-right: 25px;
+}
+.connect-db-div span i{
+	padding-right: 8px;
+}
+.connect-db-div span i.fa-link{
+	color: #8E44AD;
+}
+.sublime-div textarea,
+.result-div-tree,
+.result-div-error{
+	width: 98%;
+	margin: 0px auto;
+}
+.result-div-tree,
+.result-div-error{
+	margin-top: 15px;
+	min-height: 460px;
+	background: #fff;
+}
+.result-div-error{
+	display: none;
+}
+/*wire_robo*/

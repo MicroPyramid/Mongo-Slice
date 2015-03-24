@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mongo-Slice</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--/bootstrap-->
+    <!--font awsome-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--/font awsome-->
+    <!--style-->
+    <link href="/static/css/flat-ui.min.css" rel="stylesheet">
+    <link href="/static/css/demo.css" rel="stylesheet">
+    <link href="/static/css/tree_view.css" rel='stylesheet'>
+    <link href="/static/css/m-style.css" rel='stylesheet'>
+    <!--/style-->
+  </head>
+  <body>
+    <!--wrapper-->
+    <article class='wire_robo'>
+      <!--top row-->
+      <section class='top-row'>
+        <div class="stop_play col-md-2">
+          <a href="#" title="Debug"><span class="fui-play"></span></a>
+          <a href="#" title="stop debug" class="stop-debug"><span class="fui-pause"></span></a>
+        </div>
+        <div class="home-page-btn col-md-10">
+          <a href="#fakelink" class="btn btn-block btn-lg btn-warning">
+          <span class="fui-home"></span>
+          Return to home
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </section>
+      <!--/top row-->
+      <!--below part-->
+      <section class="body-row">
+        <!--folder tree-->
+        <section class='col-md-2 tree-div'>
+          <ul class="treeview">
+            <li>
+              <i class="fa fa-database"></i>item 1
+              <ul>
+                <li>subitem 1</li>
+                <li>subitem 2</li>
+              </ul>
+            </li>
+            <li><i class="fa fa-table"></i></i>Foo Item</li>
+            <li>
+              <i class="fa fa-folder"></i>Countries
+              <ul>
+                <li>
+                  United States
+                  <ul>
+                    <li><i class="fa fa-table"></i></i>New York</li>
+                    <li><i class="fa fa-table"></i>San Francisco</li>
+                    <li>Chicago</li>
+                    <li>Los Angeles</li>
+                  </ul>
+                </li>
+                <li>United Kingdom</li>
+                <li>China</li>
+                <li>
+                  India
+                  <ul>
+                    <li>New Delhi</li>
+                    <li>Mumbai</li>
+                    <li>Chennai</li>
+                    <li>Kolkata</li>
+                  </ul>
+                </li>
+                <li>Russia</li>
+                <li>France</li>
+                <li>Germany</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <!--/folder tree-->
+        <!--content div-->
+        <section class='content-div-robo col-md-offset-2 col-md-10'>
+          <!--row above sublime editor-->
+          <div class="row mt connect-db-div">
+            <span><i class="fa fa-link"></i>Lorem ispum is a dummy text</span>
+            <span><i class="fa fa-database"></i>Lorem ispum</span>
+          </div>
+          <!--/row above sublime editor-->
+          <!--sublime editor-->
+          <div class="row mt sublime-div">
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+          <!--/sublime editor-->
+          <!--result div-->
+          <div class="result-div-tree">
+          </div>
+          <div class="result-div-error">
+            This is to display error message
+          </div>
+          <!--/result div-->
+        </section>
+        <!--/content div-->
+      </section>
+      <!--/below part-->
+    </article>
+    <!--/wrapper-->
+    <!--script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/static/js/flat-ui.min.js"></script>
+    <script src="/static/js/application.js"></script>
+    <!--tree view-->
+    <script src="/static/js/jquery.treeView.js"></script>
+    <!--/tree view-->
+    <script>
+      $('.treeview').treeView();
+    </script>
+    <!--/script-->
+  </body>
+</html>

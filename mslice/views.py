@@ -88,3 +88,6 @@ def insert_doc(request):
 
 def wireframe(request):
     return render_to_response('wireframe.html')
+
+def wireframe_robo(request):
+    return render_to_response('wireframe_robo.html')
