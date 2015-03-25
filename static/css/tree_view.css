@@ -1,0 +1,22 @@
+.treeview,
+.treeview ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.treeview li {
+  text-indent: 1%;
+ /* margin-top: 0.2em;*/
+  padding:2px 24px;
+  line-height: 22px;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+
+.treeview li.contains-items { background-image: url('/static/img/arrow-left.png'); }
+
+.treeview li.items-expanded { background-image: url('/static/img/arrow-down.png'); }
+
+.treeview>li:hover { cursor: pointer; }
+
+.treeview span:hover { background-color: rgba(246, 246, 246, 0.7); }

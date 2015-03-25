@@ -8,6 +8,7 @@ import json
 import ast
 import re
 
+
 def index(request):
     if request.method == "POST":
         from mpcomp.views import mongoauth
@@ -41,10 +42,12 @@ def index(request):
         c.update(csrf(request))
         return render_to_response('login.html',{'csrf_token':c['csrf_token']})
 
+
 def mlogout(request):
     from django.http import HttpResponseRedirect
     request.session.flush()
     return HttpResponseRedirect('/')
+
 
 def info(request,coll_name):
     content = {}
@@ -60,13 +63,13 @@ def info(request,coll_name):
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
     return render_to_response('index.html',content)
 
+
 @csrf_exempt
 def insert_doc(request):
     if request.method == 'GET':
         c={}
         c.update(csrf(request))
         return render_to_response('index.html',{'csrf_token':c['csrf_token']})
-    print request.POST.get('collection')
     content = {}
     coll_name = request.POST.get('collection')  
     connection = Connection(request.session['host'], int(request.session['port']))
@@ -78,16 +81,14 @@ def insert_doc(request):
     content['db'] = request.session['db']   
     content['name'] = coll_name
     query=request.POST.get('ta')
-    print query
+
     try:
         c = db[query.split('.')[1]]
 
     except:
         c = db.createCollection(query.split('.')[1])
-        print c
 
     #exec(query)
-    # d= ast.literal_eval(query)
     q = query
     m=re.search("({.*})",q)
     d =m.group(0)
@@ -101,13 +102,17 @@ def insert_doc(request):
         if 'remove' in q:
             d= ast.literal_eval(d)
             resp = c.remove(d)
-        print resp
     except:
         if q.startswith('db'):
             exec(q)
         else:
             resp = "Please Enter Valid MongoDB Query"
-            print resp
 
-    # db[coll_name].insert(d)
-    return render_to_response('index.html',content)
+    return render_to_response('index.html',ctxc)
+
+def wireframe(request):
+    return render_to_response('wireframe.html')
+
+def wireframe_robo(request):
+    return render_to_response('wireframe_robo.html')
+
