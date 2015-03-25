@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body{font-family: 'Exo 2', sans-serif;padding:0px;margin:0px;/*padding-top:50px;*/background:#ededeb;}
+body{font-family: 'Exo 2', sans-serif;padding:0px;margin:0px;/*padding-top:50px;*/background:#ededeb; font-size: 14px;}
 
 .row{margin:0px;padding:0px;}
 span{display:block;}
@@ -52,21 +52,36 @@ box-shadow: 0 0 15px #bbb;}
 
 
  /*wireframe */
- article.wireframe-container{
+ article.wireframe-container,
+ article.wire_robo{
     position: absolute;
     height: 100%;
     width: 100%;
-    margin-top:54px;
 }
 .tree-div{
 	padding:0px !important;
-	position: relative;
+	position: absolute;
 	height: 100%;
 	background: #fff;
+	/*background: #3f4d57;
+	color: #fff;*/
 	border-right:2px solid #ddd;
 }
 .treeview{
 	padding:0px;
+}
+.treeview i{
+	padding-right: 5px;
+}
+.treeview i.fa-database,
+.connect-db-div span i.fa-database{
+	color: #95A5A6;
+}
+.treeview i.fa-folder{
+	color: #E67E22;
+}
+.treeview i.fa-table {
+  color: #2980B9;
 }
 .treeview li ul{
 	padding-left:0px;
@@ -75,8 +90,194 @@ box-shadow: 0 0 15px #bbb;}
 .treeview li ul li ul li{
 	padding-left:8px;
 }
+
 .mt{
 	margin:0px;
 }
-
+.txt-area-div{
+	margin-top: 20px;
+}
+.txt-area-div textarea.form-control{
+	background:#494c4e;
+	color: #fff;
+}
+.form-control{
+	border-radius: 0px;
+}
+.submit-btn-wireframe{
+	width: 15%;
+	float: right;
+	margin-top: 15px;
+}
+.submit-btn-wireframe a{
+	padding: 5px 19px;
+}
+.result-div-wireframe{
+	min-height: 380px;
+	border:2px solid #ddd;
+	margin-top: 20px;
+	background: #fff;
+	padding: 10px;
+}
+.tree-div .file-icon{
+	padding-right: 5px;
+}
  /* wireframe*/
+ /*nav-bar*/
+ .navbar{
+ 	margin-bottom: 0px;
+ }
+/*.top-bg .navbar-default {
+  background-color: #1abc9c;
+}
+.top-bg .navbar-brand{
+	color: #34495e;
+	font-weight: 600;
+	padding-top: 20px;
+}
+.top-bg .navbar-brand:hover{
+	background:#34495e;
+	color: #1abc9c !important;
+}*/
+/*nav-bar*/
+/*login*/
+.login_title{
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+	text-shadow:0 0 15px #bbb;
+	font-size: 37px;
+}
+/*login*/
+
+/*wire_robo*/
+.wire_robo .top-row{
+	padding: 5px 10px;
+	background: #f2f2f2;
+	border-bottom: 2px solid #ddd;
+}
+.wire_robo .top-row .stop_play{
+	padding-top: 3px;
+}
+.wire_robo .top-row .stop_play span{
+	display: inline-block;
+	padding-right: 9px;
+	font-size: 18px;
+}
+.wire_robo .top-row .stop_play a.stop-debug{
+	color: #D35400;
+}
+.wire_robo .top-row .stop_play a.stop-debug:hover{
+	color: #E67E22;
+}
+.wire_robo .top-row .stop_play a.stop-debug i{
+	font-size: 23px;
+}
+.home-page-btn a{
+	float: right;
+	padding: 5px 45px;
+	border-radius: 0px;
+	border: 1px solid #e74c3c;
+}
+.home-page-btn a:hover{
+	background: inherit;
+	border: 1px solid #e74c3c;
+	color: #e74c3c;
+}
+.home-page-btn a.btn-block{
+	width: auto;
+}
+.home-page-btn a span{
+	display: inline-block;
+	padding-right: 10px;
+}
+.content-div-robo{
+	padding: 0px;
+}
+.connect-db-div{
+	/*background: #fff;
+	box-shadow: 1px 1px 0.5px #bbb;*/
+	margin-top: 1px;
+	padding: 10px 5px;
+	padding-left: 12px;
+}
+.connect-db-div span{
+	display: inline-block;
+	padding-right: 25px;
+}
+.connect-db-div span i{
+	padding-right: 8px;
+}
+.connect-db-div span i.fa-desktop{
+	color: #8E44AD;
+}
+.connect-db-div span i.fa-user{
+	color: #3498DB;
+}
+.sublime-div textarea,
+.result-div-tree,
+.result-div-error{
+	width: 98%;
+	margin: 0px auto;
+}
+.sublime-div textarea{
+	background:#272822;
+	color: #fff;
+}
+.result-div-tree,
+.result-div-error{
+	margin-top: 15px;
+	height: 100%;
+	background: #fff;
+}
+.result-div-error{
+	display: none;
+}
+.result-div-tree .tree-view-div{
+	padding: 0px;
+	min-height: 510px;
+	background: #fff;
+}
+.result-div-tree .tree-view-div .icons{
+	border-bottom: 1px solid #ddd;
+	padding:5px;
+}
+.result-div-tree .tree-view-div .icons span{
+	display: inline-block;
+	padding-right: 25px;
+}
+.result-div-tree .tree-view-div .icons span i{
+	color: #95A5A6;
+	padding-right: 5px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation{
+	float: right;
+	padding-right: 5px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation i{
+	font-size:16px;
+	padding-top: 2px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-left{
+	padding-right: 15px;
+}
+.result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-right{
+	padding-right: 0px;
+	padding-left: 15px;
+}
+.tree-table-div .treeview li,
+.tree-table-div .treeview li ul li{
+	text-indent: 0%;
+	padding-right: 0px;
+}
+.tree-table-div .treeview .value_type,
+.head-tree-result-div .value_type{
+	width: 250px;
+	float: right;
+}
+.head-tree-result-div{
+	background: #1abc9c;
+	color: #fff;
+	font-weight: 600;
+}
+/*wire_robo*/

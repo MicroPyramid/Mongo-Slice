@@ -5,6 +5,9 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!--/bootstrap-->
+    <!--font awsome-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--/font awsome-->
     <!--style-->
     <link href="/static/css/flat-ui.min.css" rel="stylesheet">
     <link href="/static/css/demo.css" rel="stylesheet">
@@ -26,21 +29,23 @@
       <section class='col-md-2 tree-div'>
         <ul class="treeview">
           <li>
+          <i class="fa fa-database"></i>
             item 1
             <ul>
               <li>subitem 1</li>
               <li>subitem 2</li>
             </ul>
           </li>
-          <li>Foo Item</li>
+          <li><i class="fa fa-file file-icon"></i>Foo Item</li>
           <li>
+          <i class="fa fa-folder"></i>
             Countries
             <ul>
               <li>
                 United States
                 <ul>
-                  <li>New York</li>
-                  <li>San Francisco</li>
+                  <li><i class="fa fa-file file-icon"></i>New York</li>
+                  <li><i class="fa fa-file file-icon"></i>San Francisco</li>
                   <li>Chicago</li>
                   <li>Los Angeles</li>
                 </ul>
@@ -63,10 +68,19 @@
           </li>
         </ul>
       </section>
-      <section class='col-md-10 content-wrap-div'>
-        <div class='row mt'>
-          fewsc
+      <section class='col-md-10 connect-db-div'>
+        <div class='row mt txt-area-div'>
+
+          <textarea class="form-control" rows='2'></textarea>
+          <div class="submit-btn-wireframe">
+          <a href="#fakelink" class="btn btn-block btn-lg btn-success">Submit</a>
+          </div>
         </div>
+        <!--result div-->
+          <div class="row mt result-div-wireframe">
+          result code goes here
+          </div>
+          <!--/result div-->
       </section>
       <div class="clearfix"></div>
     </article>
