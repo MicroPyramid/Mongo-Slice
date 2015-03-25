@@ -38,75 +38,212 @@
         <!--folder tree-->
         <section class='col-md-2 tree-div'>
           <ul class="treeview">
-            <li>
-              <i class="fa fa-database"></i>item 1
-              <ul>
-                <li>subitem 1</li>
-                <li>subitem 2</li>
-              </ul>
-            </li>
-            <li><i class="fa fa-table"></i></i>Foo Item</li>
-            <li>
-              <i class="fa fa-folder"></i>Countries
-              <ul>
-                <li>
-                  United States
-                  <ul>
-                    <li><i class="fa fa-table"></i></i>New York</li>
-                    <li><i class="fa fa-table"></i>San Francisco</li>
-                    <li>Chicago</li>
-                    <li>Los Angeles</li>
-                  </ul>
-                </li>
-                <li>United Kingdom</li>
-                <li>China</li>
-                <li>
-                  India
-                  <ul>
-                    <li>New Delhi</li>
-                    <li>Mumbai</li>
-                    <li>Chennai</li>
-                    <li>Kolkata</li>
-                  </ul>
-                </li>
-                <li>Russia</li>
-                <li>France</li>
-                <li>Germany</li>
-              </ul>
-            </li>
-          </ul>
+          <li>
+            <i class="fa fa-database"></i>item 1
+            <ul>
+              <li>subitem 1</li>
+              <li>subitem 2</li>
+            </ul>
+          </li>
+          <li><i class="fa fa-table"></i>Foo Item</li>
+          <li>
+            <i class="fa fa-folder"></i>Countries
+            <ul>
+              <li>
+                United States
+                <ul>
+                  <li><i class="fa fa-table"></i>New York</li>
+                  <li><i class="fa fa-table"></i>San Francisco</li>
+                  <li>Chicago</li>
+                  <li>Los Angeles</li>
+                </ul>
+              </li>
+              <li>United Kingdom</li>
+              <li>China</li>
+              <li>
+                India
+                <ul>
+                  <li>New Delhi</li>
+                  <li>Mumbai</li>
+                  <li>Chennai</li>
+                  <li>Kolkata</li>
+                </ul>
+              </li>
+              <li>Russia</li>
+              <li>France</li>
+              <li>Germany</li>
+              </li>
+            </ul>
         </section>
         <!--/folder tree-->
         <!--content div-->
         <section class='content-div-robo col-md-offset-2 col-md-10'>
-          <!--row above sublime editor-->
-          <div class="row mt connect-db-div">
-            <span><i class="fa fa-user"></i>User</span>
-            <span><i class="fa fa-desktop"></i>Lorem ispum is a dummy text</span>
-            <span><i class="fa fa-database"></i>Lorem ispum</span>
-
-          </div>
-          <!--/row above sublime editor-->
-          <!--sublime editor-->
-          <div class="row mt sublime-div">
-            <textarea class="form-control" rows="2" placeholder="paste your command here"></textarea>
-          </div>
-          <!--/sublime editor-->
-          <!--result div-->
-          <div class="result-div-tree">
-          <div class="col-md-12 tree-view-div">
-            <div class="row mt icons">
-                <span><i class="fa fa-table"></i>Events</span>
-                <span><i class="fa fa-clock-o"></i>Clock</span>
-                <span class="pagenation"><a href="#"><i class="fa fa-caret-left"></i></a>2 of 10<a href="#"><i class="fa fa-caret-right"></i></a></span>
-            </div>
-          </div>
-          </div>
-          <div class="result-div-error">
-            This is to display error message
-          </div>
-          <!--/result div-->
-        </section>
+  <!--row above sublime editor-->
+  <div class="row mt connect-db-div">
+    <span><i class="fa fa-user"></i>User</span>
+    <span><i class="fa fa-desktop"></i>Lorem ispum is a dummy text</span>
+    <span><i class="fa fa-database"></i>Lorem ispum</span>
+  </div>
+  <!--/row above sublime editor-->
+  <!--sublime editor-->
+  <div class="row mt sublime-div">
+    <textarea class="form-control" rows="2" placeholder="paste your command here"></textarea>
+  </div>
+  <!--/sublime editor-->
+  <!--result div-->
+  <div class="result-div-tree">
+    <div class="col-md-12 tree-view-div">
+      <div class="row mt icons">
+        <span><i class="fa fa-table"></i>Events</span>
+        <span><i class="fa fa-clock-o"></i>Clock</span>
+        <span class="pagenation"><a href="#"><i class="fa fa-caret-left"></i></a>2 of 10<a href="#"><i class="fa fa-caret-right"></i></a></span>
+      </div>
+      <!--tree table div-->
+      <div class="row mt head-tree-result-div col-md-12">
+        <span class="col-md-4">Tree</span>
+        <span class='value_type'>Value</span>
+        <span class='value_type'>Type</span>
+      </div>
+      <div class="row mt tree-table-div">
+        <ul class="treeview">
+        <li>
+          <span class='col-md-4'><i class="fa fa-database"></i>item 1</span>
+          <span class='value_type'>x</span>
+          <span class='value_type'>y</span>
+          <div class="clearfix"></div>
+          <ul>
+            <li>
+              <span class='col-md-4'>subitem 1</span>
+              <span class='value_type'>subitem 1</span>
+              <span class='value_type'>subitem 1</span>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <span class='col-md-4'>subitem 2</span>
+              <span class='value_type'>subitem 1</span>
+              <span class='value_type'>subitem 1</span>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span class='col-md-4'><i class="fa fa-table"></i>Foo Item</span>
+          <span class='value_type'>x</span>
+          <span class='value_type'>y</span>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <span class='col-md-4'><i class="fa fa-folder"></i>Countries</span>
+          <span class='value_type'>x</span>
+          <span class='value_type'>y</span>
+          <div class="clearfix"></div>
+          <ul>
+            <li>
+              <span class='col-md-4'> United States</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+              <ul>
+                <li>
+                  <span class="col-md-4"><i class="fa fa-table"></i>New York</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4"><i class="fa fa-table"></i>San Francisco</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4">Chicago</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4">Los Angeles</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="col-md-4">United Kingdom</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <span class="col-md-4">China</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <span class="col-md-4">India</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+              <ul>
+                <li>
+                  <span class="col-md-4">New Delhi</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4">Mumbai</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4">Chennai</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <span class="col-md-4">Kolkata</span>
+                  <span class='value_type'>x</span>
+                  <span class='value_type'>y</span>
+                  <div class="clearfix"></div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <span class="col-md-4">Russia</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <span class="col-md-4">France</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <span class='col-md-4'>Germany</span>
+              <span class='value_type'>x</span>
+              <span class='value_type'>y</span>
+              <div class="clearfix"></div>
+            </li>
+            </li>
+          </ul>
+      </div>
+      <!--/tree table div-->
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="result-div-error">
+  This is to display error message
+  </div>
+  <!--/result div-->
+</section>
         <!--/content div-->
       </section>
       <!--/below part-->

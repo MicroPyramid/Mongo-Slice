@@ -227,7 +227,7 @@ box-shadow: 0 0 15px #bbb;}
 .result-div-tree,
 .result-div-error{
 	margin-top: 15px;
-	min-height: 460px;
+	height: 100%;
 	background: #fff;
 }
 .result-div-error{
@@ -235,6 +235,8 @@ box-shadow: 0 0 15px #bbb;}
 }
 .result-div-tree .tree-view-div{
 	padding: 0px;
+	min-height: 510px;
+	background: #fff;
 }
 .result-div-tree .tree-view-div .icons{
 	border-bottom: 1px solid #ddd;
@@ -255,7 +257,6 @@ box-shadow: 0 0 15px #bbb;}
 .result-div-tree .tree-view-div .icons span.pagenation i{
 	font-size:16px;
 	padding-top: 2px;
-	color: 
 }
 .result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-left{
 	padding-right: 15px;
@@ -263,5 +264,20 @@ box-shadow: 0 0 15px #bbb;}
 .result-div-tree .tree-view-div .icons span.pagenation i.fa-caret-right{
 	padding-right: 0px;
 	padding-left: 15px;
+}
+.tree-table-div .treeview li,
+.tree-table-div .treeview li ul li{
+	text-indent: 0%;
+	padding-right: 0px;
+}
+.tree-table-div .treeview .value_type,
+.head-tree-result-div .value_type{
+	width: 250px;
+	float: right;
+}
+.head-tree-result-div{
+	background: #1abc9c;
+	color: #fff;
+	font-weight: 600;
 }
 /*wire_robo*/
