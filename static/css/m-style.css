@@ -28,7 +28,7 @@ box-shadow: 0 0 15px #bbb;}
  .login .panel-body{background:#f3f3f3;color:#d5d5d5;}
  .login .input-group{margin-bottom:14px;} .login .input-group:last-child{margin-bottom:0px;}
  .login .input-group span{background:#40bac8;color:#259fad;border:1px solid #40bac8;}
- .login .form-control{background:#fff;color:#999;border:0px;border-radius:3px;box-shadow:none;border:1px solid #d5d5d5;padding:18px 13px;font-size:13px;}
+ .login .form-control{background:#fff;color:#000;border:0px;border-radius:3px;box-shadow:none;border:1px solid #d5d5d5;padding:18px 13px;font-size:13px;}
  .login .log-btn{color: #FFFFFF;border:none;background-color: #56b76a;border:1px solid #4db062;padding:10px 15px;border-radius:3px;}
  .login .log-btn:hover{background:#4db062;}
  .login .panel-footer{background:none;border:none;}.container{padding-top:20px;}.odd {background:#f3f3f3;}
@@ -231,7 +231,7 @@ box-shadow: 0 0 15px #bbb;}
 	background: #fff;
 }
 .result-div-error{
-	display: none;
+	/*display: none;*/
 }
 .result-div-tree .tree-view-div{
 	padding: 0px;

@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     url(r'^info/(?P<coll_name>[a-zA-Z0-9_-]+)/$', 'mslice.views.info'),
 	url(r'^operations/$','mslice.views.insert_doc'),
 	url(r'^wireframe/$','mslice.views.wireframe'),
-    url(r'^wireframe_robo/$', 'mslice.views.wireframe_robo')
+    url(r'^wireframe_robo/$', 'mslice.views.wireframe_robo'),
 )
