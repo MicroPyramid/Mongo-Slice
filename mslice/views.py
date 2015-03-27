@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 import ast
 import re
+import os
 
 
 def index(request):
@@ -35,7 +36,7 @@ def index(request):
         db = connection[request.session['db']]   
         ctx['collections'] = db.collection_names()
         ctx['db'] = request.session['db']
-        return render_to_response('index.html',ctx)
+        return render_to_response('wireframe_robo.html',ctx)
 
     else:
         c={}
@@ -60,16 +61,16 @@ def info(request,coll_name):
     content['db'] = request.session['db']   
     content['name'] = coll_name
     content['read'] = True
+    print content['documents']
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
-    return render_to_response('index.html',content)
-
+    return render_to_response('wireframe_robo.html',content)
 
 @csrf_exempt
 def insert_doc(request):
     if request.method == 'GET':
         c={}
         c.update(csrf(request))
-        return render_to_response('index.html',{'csrf_token':c['csrf_token']})
+        return render_to_response('wireframe_robo.html',{'csrf_token':c['csrf_token']})
     content = {}
     coll_name = request.POST.get('collection')  
     connection = Connection(request.session['host'], int(request.session['port']))
@@ -89,9 +90,12 @@ def insert_doc(request):
         c = db.createCollection(query.split('.')[1])
 
     #exec(query)
+
     q = query
     m=re.search("({.*})",q)
     d =m.group(0)
+    res = os.system('mongo' + db.name + '--eval' + "printjson(" + q + ")"'')
+    print res
     try:    
         if 'insert' in q:
             d= ast.literal_eval(d)
@@ -104,14 +108,13 @@ def insert_doc(request):
             resp = c.remove(d)
     except:
         if q.startswith('db'):
-            exec(q)
+            res = os.system('mongo slice --eval' + "printjson(" + q + ")"'')
+            #exec(q)
         else:
             resp = "Please Enter Valid MongoDB Query"
 
-    return render_to_response('index.html',ctxc)
+    return render_to_response('wireframe_robo.html',content)
 
-def wireframe(request):
-    return render_to_response('wireframe.html')
 
 def wireframe_robo(request):
     return render_to_response('wireframe_robo.html')

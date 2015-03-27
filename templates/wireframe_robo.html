@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load slicetags %}
+
 <html>
   <head>
     <title>Mongo-Slice</title>
@@ -36,48 +38,28 @@
       <!--below part-->
       <section class="body-row">
         <!--folder tree-->
-        <section class='col-md-2 tree-div'>
+        <section class='col-md-3 tree-div'>
           <ul class="treeview">
           <li>
-            <i class="fa fa-database"></i>item 1
+            <i class="fa fa-database"></i>{{db}}
             <ul>
-              <li>subitem 1</li>
-              <li>subitem 2</li>
+            <li>
+            <i class="fa fa-folder"></i>Collections
+            <ul>
+            {% for col in collections %}
+              <li><a href="/info/{{col}}"><i class="fa fa-table"></i>{{col}}</a></li>
+              {% endfor %}
+          
+            </ul>
+            </li>
             </ul>
           </li>
-          <li><i class="fa fa-table"></i>Foo Item</li>
-          <li>
-            <i class="fa fa-folder"></i>Countries
-            <ul>
-              <li>
-                United States
-                <ul>
-                  <li><i class="fa fa-table"></i>New York</li>
-                  <li><i class="fa fa-table"></i>San Francisco</li>
-                  <li>Chicago</li>
-                  <li>Los Angeles</li>
-                </ul>
-              </li>
-              <li>United Kingdom</li>
-              <li>China</li>
-              <li>
-                India
-                <ul>
-                  <li>New Delhi</li>
-                  <li>Mumbai</li>
-                  <li>Chennai</li>
-                  <li>Kolkata</li>
-                </ul>
-              </li>
-              <li>Russia</li>
-              <li>France</li>
-              <li>Germany</li>
-              </li>
-            </ul>
+              </ul>
+         
         </section>
         <!--/folder tree-->
         <!--content div-->
-        <section class='content-div-robo col-md-offset-2 col-md-10'>
+        <section class='content-div-robo col-md-offset-3 col-md-9'>
   <!--row above sublime editor-->
   <div class="row mt connect-db-div">
     <span><i class="fa fa-user"></i>User</span>
@@ -100,140 +82,38 @@
       </div>
       <!--tree table div-->
       <div class="row mt head-tree-result-div col-md-12">
-        <span class="col-md-4">Tree</span>
-        <span class='value_type'>Value</span>
+        <span class="col-md-4">Key</span>
         <span class='value_type'>Type</span>
+        <span class='value_type'>Value</span>
       </div>
       <div class="row mt tree-table-div">
         <ul class="treeview">
+        {% for doc in documents %}
         <li>
-          <span class='col-md-4'><i class="fa fa-database"></i>item 1</span>
+          <span class='col-md-4'><i class="fa fa-database"></i>{{ doc|mongo_id }}</span>
           <span class='value_type'>x</span>
           <span class='value_type'>y</span>
           <div class="clearfix"></div>
           <ul>
+          {% for key, value in doc.items %}
             <li>
-              <span class='col-md-4'>subitem 1</span>
-              <span class='value_type'>subitem 1</span>
-              <span class='value_type'>subitem 1</span>
+              <span class='col-md-4'>{{ key }}</span>
+              <span class='value_type'>{{ value }}</span>
+              <span class='value_type'>{{ value }}</span>
               <div class="clearfix"></div>
             </li>
-            <li>
+            {% endfor %}
+            <!-- <li>
               <span class='col-md-4'>subitem 2</span>
-              <span class='value_type'>subitem 1</span>
-              <span class='value_type'>subitem 1</span>
+              <span class='value_type'>subitem x</span>
+              <span class='value_type'>subitem y</span>
               <div class="clearfix"></div>
-            </li>
+            </li> -->
           </ul>
         </li>
-        <li>
-          <span class='col-md-4'><i class="fa fa-table"></i>Foo Item</span>
-          <span class='value_type'>x</span>
-          <span class='value_type'>y</span>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <span class='col-md-4'><i class="fa fa-folder"></i>Countries</span>
-          <span class='value_type'>x</span>
-          <span class='value_type'>y</span>
-          <div class="clearfix"></div>
-          <ul>
-            <li>
-              <span class='col-md-4'> United States</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-              <ul>
-                <li>
-                  <span class="col-md-4"><i class="fa fa-table"></i>New York</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4"><i class="fa fa-table"></i>San Francisco</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4">Chicago</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4">Los Angeles</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <span class="col-md-4">United Kingdom</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <span class="col-md-4">China</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <span class="col-md-4">India</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-              <ul>
-                <li>
-                  <span class="col-md-4">New Delhi</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4">Mumbai</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4">Chennai</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-                <li>
-                  <span class="col-md-4">Kolkata</span>
-                  <span class='value_type'>x</span>
-                  <span class='value_type'>y</span>
-                  <div class="clearfix"></div>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <span class="col-md-4">Russia</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <span class="col-md-4">France</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-            </li>
-            <li>
-              <span class='col-md-4'>Germany</span>
-              <span class='value_type'>x</span>
-              <span class='value_type'>y</span>
-              <div class="clearfix"></div>
-            </li>
-            </li>
-          </ul>
+        {% endfor %}
+        
+         </ul>
       </div>
       <!--/tree table div-->
     </div>
@@ -241,6 +121,13 @@
   <div class="clearfix"></div>
   <div class="result-div-error">
   This is to display error message
+      <div id="display1">
+      {% if col %}
+      <b>Documents under {{name}} - {{count}}</b><br><br>{% endif %}
+      {% for doc in documents %}
+      <p>{{doc}}</p>
+      {% endfor %}
+      </div>
   </div>
   <!--/result div-->
 </section>
