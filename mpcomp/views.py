@@ -10,7 +10,7 @@ import random
 def getConn(request):
     import pymongo
 
-    client = pymongo.MongoClient(request.session['host'], request.session['port'])
+    client = pymongo.MongoClient(request.session['host'], int(request.session['port']))
     db = client[request.session['db']]
     db.authenticate(request.session['uid'], request.session['pwd'])
     return db

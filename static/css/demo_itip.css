@@ -1,0 +1,88 @@
+/*ngo tien thai*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+header {
+  background: #EFF0F2;
+  color: #2980B9;
+  padding: 50px;
+  
+}
+header h1,header p{
+  width: 100%;
+  text-align: center;
+
+}
+header h1 {
+  font-size: 3em;
+  
+}
+header p {
+  font-size: 1.5em;
+}
+section#main-content {
+  background: #99CD33 ;
+  color:#4C6619 ;
+  text-align: center;
+  overflow: hidden;
+}
+
+section#main-content .demo-wrap {
+  border-bottom: 1px dotted #FFFFFF;
+  padding: 20px;
+  width: 47%;
+  float:left;
+  height: 400px;
+ 
+}
+section#main-content div.demo-wrap div.item {
+  width: 100px;
+  height: 100px;
+  border-radius: 1000%;
+  background: #CCE699;
+  margin: 0px auto;
+  line-height: 100px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #FF4351; 
+  
+}
+section#main-content div.demo-wrap h2 {
+  margin-top: 20px;
+}
+
+section#main-content div.demo-wrap pre {
+  width: 80%;
+  margin:0px auto;
+  margin-top: 20px;
+  text-align: left;
+}
+#position div {
+  display: inline;
+  padding: 10px;
+ 
+}
+#position div label {
+   cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #CCCCCC;
+ 
+}
+footer  a {
+   color: #4F7F9F;
+  font-size: 2em;
+  border-left: 2px solid #5A5A5A;
+  padding-left: 20px;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #FF667A;
+}
+footer  a:first-child {
+  border: none;
+  padding-right: 20px;
+}

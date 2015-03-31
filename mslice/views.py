@@ -10,6 +10,8 @@ import json
 import ast
 import re
 import os
+from mpcomp.views import getConn
+
 
 
 def index(request):
@@ -34,8 +36,9 @@ def index(request):
     elif 'login' in request.session:
     
         ctx = {}
-        connection = Connection(request.session['host'], int(request.session['port'])) #Connect to mongodb
-        db = connection[request.session['db']]   
+        # connection = Connection(request.session['host'], int(request.session['port'])) #Connect to mongodb
+        # db = connection[request.session['db']]   
+        db = getConn(request)
         ctx['collections'] = db.collection_names()
         ctx['db'] = request.session['db']
         return render_to_response('wireframe_robo.html',ctx)
@@ -56,7 +59,8 @@ def mlogout(request):
 def info(request,coll_name):
     content = {}
     connection = Connection(request.session['host'], int(request.session['port']))
-    db = connection[request.session['db']]
+    # db = connection[request.session['db']]
+    db = getConn(request)
     content['count']=db[coll_name].count()
     content['documents'] = list(db[coll_name].find())
     content['collstats'] = db.command("collstats", coll_name)
@@ -66,6 +70,8 @@ def info(request,coll_name):
     content['read'] = True
     content['connection'] = connection
     content['coll_name'] = coll_name
+    content['dbstats'] = db.command("dbstats")
+    content['serverStatus'] = db.command("serverStatus")
     
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
     return render_to_response('wireframe_robo.html',content)
@@ -75,7 +81,8 @@ def query_process(request):
     content = {}
     coll_name = request.POST.get('collection')  
     connection = Connection(request.session['host'], int(request.session['port']))
-    db = connection[request.session['db']]
+    # db = connection[request.session['db']]
+    db = getConn(request)
     content['collections'] = db.collection_names()
     content['db'] = request.session['db']   
     content['connection'] = connection
@@ -93,6 +100,7 @@ def query_process(request):
     m=re.search("({.*})",q)
     if m == None :
         d = None
+        
     else:
         d=m.group(0)
     resp = None
@@ -170,12 +178,15 @@ def query_process(request):
                         resp = c.find(d)
                         resp = dumps(resp)
 
-                    return render_to_response('wireframe_robo.html',{'documents':resp, 'content':content})
+                    return render_to_response('wireframe_robo.html',{'resp':resp, 'content':content})
             resp = dumps(c.find())
             print 'ok'
-            return render_to_response('wireframe_robo.html',{'documents':resp, 'content':content})
+            return render_to_response('wireframe_robo.html',{'resp':resp, 'content':content})
+        resp = "Query Not Found"
+        return render_to_response('wireframe_robo.html',{'resp':resp, 'content':content})
 
     except:
+        print "hello"
         return render_to_response('wireframe_robo.html',{'resp':resp, 'content':content})
 
     #exec(query)

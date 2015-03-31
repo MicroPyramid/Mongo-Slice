@@ -1,0 +1,78 @@
+/*ngô tiến thái*/
+body,html {
+  height: 100%;
+}
+div.Itip{
+  width: 200px;
+  height: 200px;
+  background: #FEAE1B;
+  border-radius: 50%;
+  line-height: 200px;
+  text-align: center;
+  font-size: 2em;
+  color: #fff;
+  position: relative;
+  top: 30%;
+  left: 30%;
+  cursor: pointer;
+}
+
+.itip {
+  min-width: 100px;
+  background: #ED4694;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 2em;
+  color: #fff;
+  cursor: pointer;
+
+  
+  
+}
+.itip> .Itip-inner {
+  position: relative;
+  width: 100%;
+}
+.itip div.Itip-content {
+   font-size: 20px;
+   padding: 10px 20px;
+}
+span.arrow{
+	width: 0px;
+  height: 0px;
+  position: absolute;
+}
+span.arrow.right {
+
+  /*right*/
+   
+   top: calc(50% - 10px); right: -10px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 10px solid #ED4694; 
+}
+span.arrow.bottom {
+	/*bottom*/
+  
+  top: 100%; left: calc(50% - 10px);
+  border-top: 11px solid #ED4694;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;  
+}
+span.arrow.top {
+/*top*/
+  
+  top: -10px; left: calc(50% - 10px);
+  border-bottom: 11px solid #ED4694;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;  
+  
+}
+span.arrow.left {
+ /*left*/
+   
+   top: calc(50% - 10px); left: -10px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-right: 10px solid #ED4694; 
+} 

@@ -1,25 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load slicetags %}
-
-  <!--result div-->
-  {% if documents %}
-  <div class="result-div-tree" id="result-div">
-    <div class="col-md-12 tree-view-div">
-      <div class="row mt icons">
-        <span><i class="fa fa-table"></i>{{coll_name}}</span>
-        <!-- <span><i class="fa fa-clock-o"></i>Clock</span> -->
-        <span class="pagenation"><a href="#"><i class="fa fa-caret-left"></i></a>2 of 10<a href="#"><i class="fa fa-caret-right"></i></a></span>
-      </div>
-      <!--tree table div-->
-      <div class="row mt head-tree-result-div col-md-12">
-        <span class="col-md-4">Key</span>
+<!--result div-->
+{% if documents %}
+<div class="result-div-tree" id="result-div">
+  <div class="col-md-12 tree-view-div">
+    <div class="row mt icons">
+      <span><i class="fa fa-table"></i>{{coll_name}}</span>
+      <!--tool tip-->
+      <div class="demo-wrap" >
+        <div class="item" id="htmlcontent" style="position:realtive !important;">Statistics<div id="content" style="display:none;position:absolute !important;left:200px;" class="Itip-wrap">
+          <table class="table table-bordered">
+      {% for key,value in collstats.items %}
+            <tr>
+            <th width="20%">{{key}}</th>
+            <td width="80%">{{value}}</td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div></div>
         
-        <span class='value_type'>Type</span>
-        <span class='value_type'>Value</span>
       </div>
-      <div class="row mt tree-table-div">
-        <ul class="treeview">
+      <!--/tool tip-->
+      <!-- <span><i class="fa fa-clock-o"></i>Clock</span> -->
+      <span class="pagenation"><a href="#"><i class="fa fa-caret-left"></i></a>2 of 10<a href="#"><i class="fa fa-caret-right"></i></a></span>
+    </div>
+    <!--tree table div-->
+    <div class="row mt head-tree-result-div col-md-12">
+      <span class="col-md-4">Key</span>
+      <span class='value_type'>Type</span>
+      <span class='value_type'>Value</span>
+    </div>
+    <div class="row mt tree-table-div">
+      <ul class="treeview">
         {% for doc in documents %}
         <li>
           <span class='col-md-4'><i class="fa fa-database"></i>{{ doc|mongo_id }}</span>
@@ -27,60 +40,65 @@
           <span class='value_type'></span>
           <div class="clearfix"></div>
           <ul>
-          {% for key, value in doc.items %}
+            {% for key, value in doc.items %}
             <li>
               <span class='col-md-4'>{{ key }}</span>
-              
-              <span class='value_type'>vud</span>
+              <span class='value_type'>{{ value | dtype }}</span>
               <span class='value_type'>{{ value }}</span>
               <div class="clearfix"></div>
             </li>
             {% endfor %}
-            <!-- <li>
-              <span class='col-md-4'>subitem 2</span>
-              <span class='value_type'>subitem x</span>
-              <span class='value_type'>subitem y</span>
-              <div class="clearfix"></div>
-            </li> -->
           </ul>
         </li>
         {% endfor %}
-        
-         </ul>
-      </div>
-      <!--/tree table div-->
+      </ul>
     </div>
+    <!--/tree table div-->
   </div>
-  {% endif %}
-  {% if resp %}
-
-  <div class="clearfix"></div>
-  <div class="result-div-error">
-
-      <div id="display1">
-      {{ resp }}
-      </div>
+</div>
+{% endif %}
+{% if resp %}
+<div class="clearfix"></div>
+<div class="result-div-error">
+  <div id="display1">
+    {{ resp }}
   </div>
-  {% endif %}
-  <!--/result div-->
+</div>
+{% endif %}
+<!--/result div-->
 </section>
-        <!--/content div-->
-      </section>
-      <!--/below part-->
-    </article>
-    <!--/wrapper-->
-    <!--script-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/static/js/flat-ui.min.js"></script>
-    <script src="/static/js/application.js"></script>
-    <!--tree view-->
-    <script src="/static/js/jquery.treeView.js"></script>
-    <!--/tree view-->
-    <script>
-      $('.treeview').treeView();
-    </script>
-    <!--/script-->
-  </body>
+<!--/content div-->
+</section>
+<!--/below part-->
+</article>
+<!--/wrapper-->
+<!--script-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/static/js/flat-ui.min.js"></script>
+<script src="/static/js/application.js"></script>
+<!--tree view-->
+<script src="/static/js/jquery.treeView.js"></script>
+<!--/tree view-->
+<!--tool tip-->
+<script src="/static/js/jQuery.Itip.js"></script>
+<!--/tool tip-->
+<script>
+  $('.treeview').treeView();
+</script>
+<!--tool tip-->
+<script>
+  $('#htmlcontent').Itip({
+  position: 'right',
+  content: $("#content").html(),
+  minWidth: 'auto',
+  maxWidth: 'auto'
+  
+  });
+
+</script>
+<!--/tool tip-->
+<!--/script-->
+</body>
 </html>
 <script language="javascript" type="text/javascript">
   function submitQueryform() {
