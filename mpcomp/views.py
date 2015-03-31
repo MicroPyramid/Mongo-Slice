@@ -30,6 +30,7 @@ def mongoauth(host, port, db, uid, pwd):
         return False
 
 
+
 class MongoEncoder(JSONEncoder):
     
     def default(self, obj, **kwargs):
