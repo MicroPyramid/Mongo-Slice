@@ -5,6 +5,4 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'mslice.views.mlogout'),
     url(r'^info/(?P<coll_name>[a-zA-Z0-9_-]+)/$', 'mslice.views.info'),
 	url(r'^query-process/$','mslice.views.query_process'),
-	url(r'^wireframe/$','mslice.views.wireframe'),
-    url(r'^wireframe_robo/$', 'mslice.views.wireframe_robo'),
 )

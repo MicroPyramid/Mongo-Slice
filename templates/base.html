@@ -44,7 +44,7 @@
         <section class='col-md-3 tree-div'>
           <ul class="treeview">
           <li>
-            <i class="fa fa-database"></i>{{db}} {% if content.db %}{{content.db}} {% endif %}
+            <i class="fa fa-database"></i>{{ request.session.db }}
             <ul>
             <li>
             <i class="fa fa-folder"></i>Collections
@@ -72,8 +72,8 @@
   <!--row above sublime editor-->
   <div class="row mt connect-db-div">
     <span><i class="fa fa-user"></i>{{ request.session.uid }}</span>
-    <span><i class="fa fa-desktop"></i>{{ connection }} {% if content.connection %}{{ content.connection }} {% endif %}</span>
-    <span><i class="fa fa-database"></i>{{ db }}{% if content.db %}{{ content.db }} {% endif %}</span>
+    <span><i class="fa fa-desktop"></i>{{ request.session.host }}:{{ request.session.port}}</span>
+    <span><i class="fa fa-database"></i>{{ request.session.db }}</span>
   </div>
   <!--/row above sublime editor-->
   <!--sublime editor-->

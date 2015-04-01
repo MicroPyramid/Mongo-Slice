@@ -22,24 +22,6 @@
         
       </div>
       <!--/tool tip-->
-      <!--
-      {% comment %}
-      <div class="pagination-box">
-<ul class="pagination">
-{% get_page current_page last_page as pages %}
-{% for s in pages %}
-<li {% ifequal s current_page %} class="active" {% endifequal %}><a href="/blog/?page={{s}}">{{s}}</a></li>
-{% endfor %}
-<li class="disabled"><a href="/blog/?page={{s}}">...</a></li>
-<li><a href="/blog/?page={{last_page}}">last</a></li>
-<li><a href="/blog/?page={{current_page| add:"1"}}">Next<i class="fa fa-angle-right pagination-next"></i></a>
-</li>
-</ul>
-</div>
-
-      {% endcomment %}
-      -->
-      <!-- <span><i class="fa fa-clock-o"></i>Clock</span> -->
       <span class="pagenation"><a href="/info/{{coll_name}}/?page={{current_page| add:"-1"}}"><i class="fa fa-caret-left"></i></a>{{current_page}} of {{last_page}}<a href="/info/{{coll_name}}/?page={{current_page| add:"1"}}"><i class="fa fa-caret-right"></i></a></span>
     </div>
     <!--tree table div-->
