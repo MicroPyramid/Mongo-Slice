@@ -11,7 +11,7 @@ import ast
 import re
 import os
 from mpcomp.views import getConn
-
+import math
 
 
 def index(request):
@@ -59,10 +59,29 @@ def mlogout(request):
 def info(request,coll_name):
     content = {}
     connection = Connection(request.session['host'], int(request.session['port']))
-    # db = connection[request.session['db']]
     db = getConn(request)
+
+    # db = connection[request.session['db']]
+#     items_per_page = 10
+# if "page" in request.GET:
+# page = int(request.GET.get('page'))
+# else:
+# page = 1
+# no_pages = int(math.ceil(float(Post.objects.filter(status='P').count()) / items_per_page))
+# blog_posts = Post.objects.filter(status='P').order_by('-created_on')[(page - 1) * items_per_page:page * items_per_page]
+# c = {}
+# c.update(csrf(request))
+# return render_to_response('site/blog/index.html', {'pagelist':page_list,'current_page':page,'last_page':no_pages,
+# 'posts':blog_posts, 'csrf_token':c['csrf_token']})
+    items_per_page = 10
+    if "page" in request.GET:
+        page = int(request.GET.get('page'))
+    else:
+        page = 1
+    no_pages = int(math.ceil(float(db[coll_name].find().count()) / items_per_page))
+
     content['count']=db[coll_name].count()
-    content['documents'] = list(db[coll_name].find())
+    content['documents'] = list(db[coll_name].find())[(page - 1) * items_per_page:page * items_per_page]
     content['collstats'] = db.command("collstats", coll_name)
     content['collections'] = db.collection_names()
     content['db'] = request.session['db']   
@@ -72,6 +91,8 @@ def info(request,coll_name):
     content['coll_name'] = coll_name
     content['dbstats'] = db.command("dbstats")
     content['serverStatus'] = db.command("serverStatus")
+    content['current_page'] = page
+    content['last_page'] = no_pages
     
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
     return render_to_response('wireframe_robo.html',content)
