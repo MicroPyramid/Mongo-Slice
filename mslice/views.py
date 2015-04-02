@@ -160,14 +160,15 @@ def query_process(request):
                 else:
                     if 'findOne' in q:
                         resp = dumps(c.find_one(d))
-                        resp = dumps(resp)
+                        resp = list(resp)
                     else:
                         resp = c.find(d)
-                        resp = dumps(resp, indent=4)
 
-                    return render_to_response('home.html', {'resp': resp, 'request': request, 'content': content})
-            resp = dumps(c.find(), indent=4)
-            return render_to_response('home.html', {'resp': resp, 'request': request, 'content': content})
+                        resp = list(resp)
+
+                    return render_to_response('home.html', {'documents': resp, 'request': request, 'coll_name': c.name, 'content': content})
+            resp = list(c.find())
+            return render_to_response('home.html', {'documents': resp, 'request': request, 'coll_name': c.name, 'content': content})
 
         if 'drop' in q:
             try:
