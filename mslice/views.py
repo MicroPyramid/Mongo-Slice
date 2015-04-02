@@ -6,7 +6,7 @@ from bson.json_util import dumps
 import json
 import ast
 import re
-from mpcomp.views import getConn
+from mpcomp.views import getConn, mongoauth
 import math
 
 
