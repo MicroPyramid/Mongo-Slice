@@ -9,7 +9,7 @@
       <span><i class="fa fa-table"></i>{{coll_name}}</span>
       <!--tool tip-->
       <div class="demo-wrap" >
-        <div class="item" id="htmlcontent" style="position:realtive !important;">Statistics<div id="content" style="display:none;position:absolute !important;left:200px;" class="Itip-wrap">
+        <div class="item" id="htmlcontent" style="position:realtive !important;"><i class="fa fa-bar-chart"></i> Statistics<div id="content" style="display:none;position:absolute !important;left:200px;" class="Itip-wrap">
           <table class="table table-bordered">
       {% for key,value in collstats.items %}
             <tr>
@@ -34,7 +34,7 @@
       <ul class="treeview">
         {% for doc in documents %}
         <li>
-          <span class='col-md-4'><i class="fa fa-database"></i>{{ doc|mongo_id }}</span>
+          <span class='col-md-4'><i class="fa fa-file-text-o"></i>{{ doc|mongo_id }}</span>
           <span class='value_type'></span>
           <span class='value_type'></span>
           <div class="clearfix"></div>
