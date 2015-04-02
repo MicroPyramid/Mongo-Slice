@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
-body{font-family: 'Exo 2', sans-serif;padding:0px;margin:0px;/*padding-top:50px;*/background:#ededeb; font-size: 14px;}
+body{font-family: 'Exo 2', sans-serif;
+padding:0px;margin:0px;/*padding-top:50px;*/background:#ededeb; font-size: 13px;}
 
 .row{margin:0px;padding:0px;}
 span{display:block;}
@@ -159,6 +160,9 @@ box-shadow: 0 0 15px #bbb;}
 .wire_robo .top-row .stop_play{
 	padding-top: 3px;
 }
+.wire_robo .top-row .stop_play i{
+	font-size:18px;
+}
 .wire_robo .top-row .stop_play span{
 	display: inline-block;
 	padding-right: 9px;
@@ -175,8 +179,9 @@ box-shadow: 0 0 15px #bbb;}
 }
 .home-page-btn a{
 	float: right;
-	padding: 5px 45px;
+	padding: 5px 10px;
 	border-radius: 0px;
+	font-size: 13px;
 	border: 1px solid #e74c3c;
 }
 .home-page-btn a:hover{
@@ -189,7 +194,7 @@ box-shadow: 0 0 15px #bbb;}
 }
 .home-page-btn a span{
 	display: inline-block;
-	padding-right: 10px;
+	padding-right: 0px;
 }
 .content-div-robo{
 	padding: 0px;
@@ -281,4 +286,15 @@ box-shadow: 0 0 15px #bbb;}
 	color: #fff;
 	font-weight: 600;
 }
+.home-page-btn{
+	Padding:0px;
+}
+.home-page-btn .list-inline {
+	padding-left: 0;
+	margin-left: -5px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	text-align: RIGHT;
+	}
 /*wire_robo*/
