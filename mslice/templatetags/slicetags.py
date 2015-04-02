@@ -3,4 +3,14 @@ register = template.Library()
 
 @register.filter("mongo_id")
 def mongo_id(value):
-    return str(value['_id'])
+    try:
+    	return str(value['_id'])
+    except:
+    	return "Unknown"
+
+@register.filter("dtype")
+def dtype(value):
+	try:
+		return value.__class__.__name__
+	except:
+		return "Unknown"

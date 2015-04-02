@@ -242,7 +242,8 @@ box-shadow: 0 0 15px #bbb;}
 	border-bottom: 1px solid #ddd;
 	padding:5px;
 }
-.result-div-tree .tree-view-div .icons span{
+.result-div-tree .tree-view-div .icons span,
+.result-div-tree .tree-view-div .icons div.demo-wrap {
 	display: inline-block;
 	padding-right: 25px;
 }

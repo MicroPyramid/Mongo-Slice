@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Mongo-Slice</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--/bootstrap-->
+    <!--font awsome-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!--/font awsome-->
+    <!--tooltip-->
+    <link rel="stylesheet" href="/static/css/demo_itip.css">
+    <link rel="stylesheet" href="/static/css/Itip.css">
+    <!--/tool tip-->
+    <!--style-->
+    <link href="/static/css/flat-ui.min.css" rel="stylesheet">
+    <link href="/static/css/demo.css" rel="stylesheet">
+    <link href="/static/css/tree_view.css" rel='stylesheet'>
+    <link href="/static/css/m-style.css" rel='stylesheet'>
+    <!--/style-->
+  </head>
+  <body>
+    <!--wrapper-->
+    <article class='wire_robo'>
+      <!--top row-->
+      <section class='top-row'>
+        <div class="stop_play col-md-2">
+          <a onClick= 'submitQueryform()' title="Debug"/><i class="fui-play"></i></a>
+          <a href="#" title="stop debug" class="stop-debug"><i class="fa fa-square"></i></a>
+        </div>
+        <div class="home-page-btn col-md-10">
+          <a href="/" class="btn btn-block btn-lg btn-danger">
+          <span class="fui-home"></span>
+          Home
+          </a>
+        </div>
+        <div class="clearfix"></div>
+      </section>
+      <!--/top row-->
+      <!--below part-->
+      <section class="body-row">
+        <!--folder tree-->
+        <section class='col-md-3 tree-div'>
+          <ul class="treeview">
+          <li>
+            <i class="fa fa-database"></i>{{ request.session.db }}
+            <ul>
+            <li>
+            <i class="fa fa-folder"></i>Collections
+            <ul>
+            {% if content.collections %}
+            {% for col in content.collections %}
+              <li><a href="/info/{{col}}"><i class="fa fa-table"></i>{{col}}</a></li>
+              {% endfor %}
+            {% endif %}           
+            {% for col in collections %}
+              <li><a href="/info/{{col}}"><i class="fa fa-table"></i>{{col}}</a></li>
+              {% endfor %}
+
+
+            </ul>
+            </li>
+            </ul>
+          </li>
+              </ul>
+         
+        </section>
+        <!--/folder tree-->
+        <!--content div-->
+        <section class='content-div-robo col-md-offset-3 col-md-9'>
+  <!--row above sublime editor-->
+  <div class="row mt connect-db-div">
+    <span><i class="fa fa-user"></i>{{ request.session.uid }}</span>
+    <span><i class="fa fa-desktop"></i>{{ request.session.host }}:{{ request.session.port}}</span>
+    <span><i class="fa fa-database"></i>{{ request.session.db }}</span>
+  </div>
+  <!--/row above sublime editor-->
+  <!--sublime editor-->
+  <form name="insertform" id = 'formquery' method="post" action="/query-process/">
+      {% csrf_token %}
+  <div class="row mt sublime-div">
+    <textarea class="form-control" name="ta" id="ta" rows="2" placeholder="Enter Mongodb Query Here"></textarea>
+  </div></form>
+  <!--/sublime editor-->
+  {% block content %}{% endblock %}

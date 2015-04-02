@@ -4,10 +4,15 @@ from pymongo import Connection
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from mpcomp.views import mongoauth
+from bson.json_util import dumps
 import json
 import ast
 import re
 import os
+from mpcomp.views import getConn
+import math
+from django.shortcuts import render
 
 
 def index(request):
@@ -31,17 +36,17 @@ def index(request):
 
     elif 'login' in request.session:
     
-        ctx = {}
-        connection = Connection(request.session['host'], int(request.session['port'])) #Connect to mongodb
-        db = connection[request.session['db']]   
-        ctx['collections'] = db.collection_names()
-        ctx['db'] = request.session['db']
-        return render_to_response('wireframe_robo.html',ctx)
+        content = {}
+        db = getConn(request)
+        content['collections'] = db.collection_names()
+        content['request'] = request
+        return render_to_response('home.html',content)
 
     else:
         c={}
         c.update(csrf(request))
         return render_to_response('login.html',{'csrf_token':c['csrf_token']})
+
 
 
 def mlogout(request):
@@ -52,70 +57,153 @@ def mlogout(request):
 
 def info(request,coll_name):
     content = {}
-    connection = Connection(request.session['host'], int(request.session['port']))
-    db = connection[request.session['db']]
-    content['count']=db[coll_name].count()
-    content['documents'] = list(db[coll_name].find())
-    content['collstats'] = db.command("collstats", coll_name)
-    content['collections'] = db.collection_names()
-    content['db'] = request.session['db']   
-    content['name'] = coll_name
-    content['read'] = True
-    print content['documents']
+    db = getConn(request)
+
+    # db = connection[request.session['db']]
+    items_per_page = 10
+    if "page" in request.GET:
+        page = int(request.GET.get('page'))
+    else:
+        page = 1
+    no_pages = int(math.ceil(float(db[coll_name].find().count()) / items_per_page))
+
+    content = {
+        'count': db[coll_name].count(),
+        'documents' : list(db[coll_name].find())[(page - 1) * items_per_page:page * items_per_page],
+        'collstats' : db.command("collstats", coll_name),
+        'collections' : db.collection_names(),
+        'db' : request.session['db'],   
+        'name' : coll_name,
+        'read' : True,
+        'coll_name' : coll_name,
+        'dbstats' : db.command("dbstats"),
+        #'serverStatus' : db.command("serverStatus"),
+        'current_page' : page,
+        'last_page' : no_pages,
+        'request' : request,
+    }
+    
     #db[coll_name].insert({'Name':'Charan','College':'SNIST'})
-    return render_to_response('wireframe_robo.html',content)
+    return render_to_response('home.html',content)
 
 @csrf_exempt
-def insert_doc(request):
+def query_process(request):
+    content = {}
+    coll_name = request.POST.get('collection')  
+    # db = connection[request.session['db']]
+    db = getConn(request)
+    content = {
+        'collections' : db.collection_names(),
+        'db' : request.session['db'],   
+        'request' : request,
+    }
+    
     if request.method == 'GET':
         c={}
         c.update(csrf(request))
-        return render_to_response('wireframe_robo.html',{'csrf_token':c['csrf_token']})
-    content = {}
-    coll_name = request.POST.get('collection')  
-    connection = Connection(request.session['host'], int(request.session['port']))
-    db = connection[request.session['db']]
-    content['count']=db[coll_name].count()
-    content['documents'] = list(db[coll_name].find())
-    content['collstats'] = db.command("collstats", coll_name)
-    content['collections'] = db.collection_names()
-    content['db'] = request.session['db']   
-    content['name'] = coll_name
-    query=request.POST.get('ta')
+        return render_to_response('home.html',{'csrf_token':c['csrf_token'],'request' : request ,'content':content})
+    
+    q = request.POST.get('ta')
+    if not q.startswith('db'):
+        resp = 'Please Enter Valid Query:'
+        return render_to_response('home.html',{'resp':resp, 'request' : request, 'content':content})
 
-    try:
-        c = db[query.split('.')[1]]
-
-    except:
-        c = db.createCollection(query.split('.')[1])
-
-    #exec(query)
-
-    q = query
     m=re.search("({.*})",q)
-    d =m.group(0)
-    res = os.system('mongo' + db.name + '--eval' + "printjson(" + q + ")"'')
-    print res
-    try:    
+    if m == None :
+        d = None
+        
+    else:
+        d=m.group(0)
+    resp = None
+    
+    try:
+
         if 'insert' in q:
-            d= ast.literal_eval(d)
+        
             try:
+                c = db[q.split('.')[1]]
+            except:
+                c = db.createCollection(q.split('.')[1])
+            
+            # if not d:
+            #     return render_to_response('home.html',{'resp':resp, 'content':content})
+            
+            try:
+                d= ast.literal_eval(d)
                 resp = c.save(d)
-            except InvalidSyntax:
-                exec(q)
+                resp = 'Status: Document Inserted Succesfully ' + str(resp)
+            except (SyntaxError, TypeError, ValueError, NameError):
+                resp = 'Please Enter Valid Query'
+            
+            return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content}) 
+        
         if 'remove' in q:
-            d= ast.literal_eval(d)
-            resp = c.remove(d)
+            try:
+                c = db[q.split('.')[1]]
+            except:
+                pass
+            if d == None:
+                c.remove()
+                resp = 'Status: Documents Removed Succesfully'
+                return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content}) 
+            try:
+                d= ast.literal_eval(d)
+                resp = c.remove(d)
+                resp = 'Status: ' + str(resp) 
+            except (SyntaxError, TypeError, ValueError, NameError):
+                resp = 'Please Enter valid Query'
+             
+            return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+        
+        if 'update' in q:
+            try:
+                c = db[q.split('.')[1]]
+            except:
+                pass
+
+            try:
+                d= ast.literal_eval(d)
+                resp = c.update( d[0], {'$set':d[1]})
+                resp = 'Status: ' + str(resp)
+            except (SyntaxError, TypeError, ValueError, NameError):
+                resp = "Please Enter valid Query"
+
+            return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+        
+        if 'find' in q:
+            c = db[q.split('.')[1]]
+            if d:
+                d = ast.literal_eval(d)
+
+                if c is None:
+                    resp =  'Collection not found'
+                else:
+                    if 'findOne' in q: 
+                        resp = dumps(c.find_one(d))
+                        resp = dumps(resp)
+                    else:
+                        resp = c.find(d)
+                        resp = dumps(resp,indent=4)
+
+                    return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+            resp = dumps(c.find(),indent=4)
+            return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+        
+        if 'drop' in q:
+            try:
+                c = db[q.split('.')[1]]
+                c.drop()
+                resp = "Status: Collection Dropped Succesfully"
+            except:
+                resp = "Please Enter Valid Collection Name or Query"
+            return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+        resp = "'Please Enter valid Query'"
+        return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
+
     except:
-        if q.startswith('db'):
-            res = os.system('mongo slice --eval' + "printjson(" + q + ")"'')
-            #exec(q)
-        else:
-            resp = "Please Enter Valid MongoDB Query"
-
-    return render_to_response('wireframe_robo.html',content)
+        return render_to_response('home.html',{'resp':resp,'request' : request, 'content':content})
 
 
-def wireframe_robo(request):
-    return render_to_response('wireframe_robo.html')
+
+
 
