@@ -18,3 +18,8 @@ MongoDB tool to monitor, interact with your mongodb servers.
    :alt: Code Health
 
 head to http://mongo-slice.readthedocs.org/ for latest documentation
+
+Visit our MongoDB Development Services page `Here`_
+
+.. _Here: https://micropyramid.com/mongodb-development-services/
+
